@@ -39,3 +39,15 @@
 
 # debug information files
 *.dwo
+/.vs/CS480FinalProject/v17/ipch/AutoPCH/28c84db89649b0de/ENGINE.ipch
+/.vs/CS480FinalProject/v17/ipch/AutoPCH/8de061d31fe41ad/MAIN.ipch
+/.vs/CS480FinalProject/FileContentIndex/ecaa3d6e-ef9e-4a55-b3db-805ceddd788a.vsidx
+/.vs/CS480FinalProject/v17/.suo
+/.vs/CS480FinalProject/v17/Browse.VC.db
+/.vs/CS480FinalProject/v17/Browse.VC.db-shm
+/.vs/CS480FinalProject/v17/Browse.VC.db-wal
+/.vs/CS480FinalProject/v17/Browse.VC.opendb
+/.vs/CS480FinalProject/v17/DocumentLayout.backup.json
+/.vs/CS480FinalProject/v17/DocumentLayout.json
+/.vs/CS480FinalProject/v17/fileList.bin
+/.vs/CS480FinalProject/v17/Solution.VC.db

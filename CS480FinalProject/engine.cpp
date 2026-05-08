@@ -1,5 +1,7 @@
 
+
 #include "engine.h"
+#include "glm/ext.hpp"
 
 Engine::Engine(const char* name, int width, int height)
 {
@@ -17,7 +19,6 @@ Engine::~Engine()
   m_window = NULL;
   m_graphics = NULL;
 }
-
 
 bool Engine::Initialize()
 {
@@ -37,11 +38,12 @@ bool Engine::Initialize()
     return false;
   }
 
- 
+  glfwSetCursorPosCallback(m_window->getWindow(), cursorPositionCallBack);
+
+
   // No errors
   return true;
 }
-
 
 void Engine::Run()
 {
@@ -62,21 +64,20 @@ void Engine::ProcessInput()
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(m_window->getWindow(), true);
 
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_W) == GLFW_RELEASE &&
-        glfwGetKey(m_window->getWindow(), GLFW_KEY_S) == GLFW_RELEASE &&
-        glfwGetKey(m_window->getWindow(), GLFW_KEY_A) == GLFW_RELEASE &&
-        glfwGetKey(m_window->getWindow(), GLFW_KEY_D) == GLFW_RELEASE)
-        m_graphics->getTriangle()->setSpeed(glm::vec3(0., 0., 0.));
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_W) == GLFW_PRESS)
-        m_graphics->getTriangle()->setSpeed(glm::vec3(0., .1, 0.));
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_S) == GLFW_PRESS)
-        m_graphics->getTriangle()->setSpeed(glm::vec3(0., -.1, 0.));
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_A) == GLFW_PRESS)
-        m_graphics->getTriangle()->setSpeed(glm::vec3(.1, 0., 0.));
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_D) == GLFW_PRESS)
-        m_graphics->getTriangle()->setSpeed(glm::vec3(-.1, 0., 0.));
+
+    // Update camera animation here.
 
 
+
+
+
+}
+
+void Engine::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+{
+ 
+    glfwGetCursorPos(window, &xpos, &ypos);
+    std::cout << "Position: (" << xpos << ":" << ypos << ")";
 }
 
 unsigned int Engine::getDT()
@@ -101,8 +102,10 @@ long long Engine::GetCurrentTimeMillis()
 void Engine::Display(GLFWwindow* window, double time) {
 
     m_graphics->Render();
-
     m_window->Swap();
+    m_graphics->HierarchicalUpdate2(time);
+}
 
-    m_graphics->Update(time, speed);
+static void cursorPositionCallBack(GLFWwindow* window, double xpos, double ypos) {
+    //cout << xpos << " " << ypos << endl;
 }

@@ -8,27 +8,26 @@ class Object
 {
   public:
     Object();
+    Object(glm::vec3 pivot);
+
     ~Object();
-    void Initialize(GLint posAttribLoc, GLint colAttribLoc);
-    void Update(unsigned int dt);
-    void Render(GLint posAttribLoc, GLint colAttribLoc);
-    void createVertices();
+    void Update(glm::mat4 model);
+    void Render(GLint posAttrib, GLint colAttrib);
 
     glm::mat4 GetModel();
 
-    void setSpeed(glm::vec3 spd) { m_speed = spd; }
+    bool InitBuffers();
+    void setupVerticies();
 
   private:
+    glm::vec3 pivotLocation;
     glm::mat4 model;
     std::vector<Vertex> Vertices;
     std::vector<unsigned int> Indices;
-
-    GLuint vao;
-
     GLuint VB;
     GLuint IB;
 
-    glm::vec3 m_speed = glm::vec3(0., 0., 0.);
+    GLuint vao;
 
     float angle;
 };
