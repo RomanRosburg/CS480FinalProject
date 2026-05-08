@@ -98,7 +98,53 @@ bool Graphics::Initialize(int width, int height)
 
 void Graphics::HierarchicalUpdateSystem1(double dt) {
 
-	// Update your animation for the solar system here.
+	std::vector<float> speed, dist, rotSpeed, scale;
+	glm::vec3 rotVector;
+
+	// position of the sun	
+	modelStack.push(glm::translate(glm::mat4(1.f), glm::vec3(0, 0, 0)));  // world origin
+	modelStack.push(modelStack.top());		// The sun origin
+	modelStack.top() *= glm::rotate(glm::mat4(1.0f), (float)dt, glm::vec3(0.f, 1.f, 0.f));
+	modelStack.top() *= glm::scale(glm::vec3(.75, .75, .75));
+	if (m_sphere != NULL)
+		m_sphere->Update(modelStack.top());
+	modelStack.pop(); // back to sun's positional transformation
+
+	// position of the first planet
+	speed = { 1., 1., 1. };
+	dist = { 6., 0, 6. };
+	rotVector = { 1.,1.,1. };
+	rotSpeed = { 1., 1., 1. };
+	scale = { .5,.5,.5 };
+	modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
+	modelStack.push(modelStack.top());			// store planet coordinate
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
+	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+	if (m_planet != NULL)
+		m_planet->Update(modelStack.top());
+	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
+
+	// position of the first moon
+
+	speed = { 6, 6, 6 };
+	dist = { 1.25, 1.25, 0. };
+	rotVector = { 1.,0.,1. };
+	rotSpeed = { .25, .25, .25 };
+	scale = { .27f, .27f, .27f };
+	modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
+	modelStack.push(modelStack.top());
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
+	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+
+	if (m_ship != NULL)
+		m_ship->Update(modelStack.top());
+
+
+	modelStack.pop(); 	//back to the planet coordinate
+
+	modelStack.pop(); 	// back to the world coordinate
 
 }
 
