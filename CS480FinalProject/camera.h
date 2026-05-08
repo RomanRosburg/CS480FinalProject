@@ -12,6 +12,11 @@ class Camera
     glm::mat4 GetProjection();
     glm::mat4 GetView();
 
+    /// Camera movement. TODO: add zoom, and aim to planet
+    // Assums a vec3 with no value greater than 1, speed obtained inside translate
+    void Translate(glm::vec3 translate, double dt);
+    void mouseLook(float mouseX, float mouseY);
+    void lookAtPlanet();
   
   private:
 
@@ -20,6 +25,21 @@ class Camera
     double z = -16.0;
     glm::mat4 projection;
     glm::mat4 view;
+
+
+    // Camera movement vars given kindly from learnopengl
+    glm::vec3 cameraPos;
+    glm::vec3 cameraFront;
+    glm::vec3 cameraUp;
+    glm::vec3 cameraRight;
+    glm::vec3 worldUp;
+
+    float speed;
+    float mouseSensitivity;
+    float yaw;
+    float pitch;
+
+    void updateCamVectors();
 };
 
 #endif /* CAMERA_H */

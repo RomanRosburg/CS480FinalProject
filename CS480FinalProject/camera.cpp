@@ -2,14 +2,22 @@
 
 Camera::Camera()
 {
-
+    cameraPos = glm::vec3(0.0f, 0.0f, 10.0f);
+    cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+    cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+    worldUp = cameraUp;
+    yaw = -90.0f;
+    pitch = 0.0f;
+    speed = 0.01f;
+    mouseSensitivity = 0.1f;
+    updateCamVectors();
 }
 
 Camera::~Camera()
 {
 
 }
-
+// Called inside Graphics
 bool Camera::Initialize(int w, int h)
 {
   //--Init the view and projection matrices
@@ -36,5 +44,48 @@ glm::mat4 Camera::GetProjection()
 
 glm::mat4 Camera::GetView()
 {
-  return view;
+  return view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);;
+}
+
+void Camera::Translate(glm::vec3 translate, double dt)
+{
+    float velocity = speed * dt;
+    cameraPos += translate * velocity;
+}
+
+void Camera::mouseLook(float mouseX, float mouseY) {
+    mouseX *= mouseSensitivity;
+    mouseY *= mouseSensitivity;
+
+    yaw += mouseX;
+    pitch += mouseY;
+
+    if (pitch > 89.0f) {
+        pitch = 89.0f;
+    }
+    if (pitch < -89.0f) {
+        pitch = -89.0f;
+    }
+
+    updateCamVectors();
+}
+
+void Camera::lookAtPlanet()
+{
+}
+
+void Camera::updateCamVectors()
+{
+    // Calc new camera front vectors
+    glm::vec3 newFront;
+    newFront.x = glm::cos(glm::radians(yaw)) * glm::cos(glm::radians(pitch));
+    newFront.y = glm::sin(glm::radians(pitch));
+    newFront.z = glm::sin(glm::radians(yaw)) * glm::cos(glm::radians(pitch));
+    cameraFront = glm::normalize(newFront);
+    // Get right and up from front and world up
+    cameraRight = glm::normalize(glm::cross(cameraFront, worldUp));
+    cameraUp = glm::normalize(glm::cross(cameraRight, cameraFront));
+
+    // calculate new view matrix
+    //view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 }

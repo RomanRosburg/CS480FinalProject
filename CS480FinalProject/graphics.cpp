@@ -96,7 +96,19 @@ bool Graphics::Initialize(int width, int height)
 	return true;
 }
 
-void Graphics::HierarchicalUpdate2(double dt) {
+void Graphics::HierarchicalUpdateSystem1(double dt) {
+
+	// Update your animation for the solar system here.
+
+}
+
+void Graphics::HierarchicalUpdateSystem2(double dt) {
+
+	// Update your animation for the solar system here.
+
+}
+
+void Graphics::HierarchicalUpdateSystem3(double dt) {
 
 	// Update your animation for the solar system here.
 

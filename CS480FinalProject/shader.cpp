@@ -58,8 +58,8 @@ bool Shader::AddShader(GLenum ShaderType)
           { \
             vec4 v = vec4(v_position, 1.0); \
             gl_Position = (projectionMatrix * viewMatrix * modelMatrix) * v; \
-            color = ??; \
-            tc = ??;\
+            color = v_color; \
+            tc = v_tc;\
           } \
           ";
   }
@@ -78,10 +78,10 @@ bool Shader::AddShader(GLenum ShaderType)
           void main(void) \
           { \
              if(hasTexture)\
-               frag_color = ???\
+               frag_color = texture(sp, tc);\
             \
             else \
-			   frag_color = ???;\
+			   frag_color = vec4(color.rgb, 1.0);\
           } \
           ";
   }

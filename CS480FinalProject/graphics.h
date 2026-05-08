@@ -22,7 +22,10 @@ class Graphics
     Graphics();
     ~Graphics();
     bool Initialize(int width, int height);
-    void HierarchicalUpdate2(double dt);
+    // 3 Seperate systems for the different planets, their orbits, and the bodies orbiting the planet, all revolving around the sun
+    void HierarchicalUpdateSystem1(double dt);
+    void HierarchicalUpdateSystem2(double dt);
+    void HierarchicalUpdateSystem3(double dt);
     void Render();
 
     Camera* getCamera() { return m_camera; }
@@ -48,11 +51,16 @@ class Graphics
     GLint m_tcAttrib;
     GLint m_hasTexture;
 
-
+    // Main Sun
     Sphere* m_sphere;
+
+    // System 1
     Sphere* m_sphere2;
+
+    // System 2
     Sphere* m_sphere3;
 
+    // Player Ship
     Mesh* m_mesh;
 
 
