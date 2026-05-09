@@ -42,24 +42,48 @@ bool Shader::AddShader(GLenum ShaderType)
     s = "#version 460\n \
           \
           layout (location = 0) in vec3 v_position; \
-          layout (location = 1) in vec3 v_color; \
-          layout (location = 2) in vec2 v_tc;  \
+          layout (location = 1) in vec2 texCoord; \
+          layout (location = 2) in vec3 v_normal;  \
              \
-          out vec3 color; \
+          out vec3 varNorm; \
+          out vec3 varLdir;\
+          out vec3 varPos;\
           out vec2 tc;\
           \
+          struct PositionalLight{\
+            vec4 ambient;\
+            vec4 diffuse;\
+            vec4 spec;\
+            vec3 position;\
+          };\
+          struct Material{\
+            vec4 ambient;\
+            vec4 diffuse;\
+            vec4 spec;\
+            float shininess;\
+          };\
+          \
+          uniform Material material;\
+          uniform vec4 GlobalAmbient;\
+          uniform PositionalLight light;\
           uniform mat4 projectionMatrix; \
           uniform mat4 viewMatrix; \
           uniform mat4 modelMatrix; \
+          uniform mat3 normMatrix; \
+          \
           uniform bool hasTC;        \
-          uniform sampler2D sp; \
+          \
+          layout (binding=0) uniform sampler2D sp; \
+          layout (binding=1) uniform sampler2D sp1; \
           \
           void main(void) \
           { \
             vec4 v = vec4(v_position, 1.0); \
             gl_Position = (projectionMatrix * viewMatrix * modelMatrix) * v; \
-            color = v_color; \
-            tc = v_tc;\
+            varPos = (viewMatrix * modelMatrix * vec4(v_position, 1.0f)).xyz; \
+            varLdir = light.position - varPos; \
+            varNorm = normMatrix * v_normal; \
+            tc = texCoord;\
           } \
           ";
   }
@@ -69,16 +93,34 @@ bool Shader::AddShader(GLenum ShaderType)
           \
           uniform sampler2D sp; \
           \
-          in vec3 color; \
-          in vec2 tc;\
+          in vec3 varNorm; \
+          in vec3 varLdir;\
+          in vec3 varPos;\
+          in vec2 tc; \
+          \
           uniform bool hasTexture;\
+          uniform bool hasNormalMap;\
           \
           out vec4 frag_color; \
           \
           void main(void) \
           { \
+             vec3 L = normalize(varLdir);\
+             vec3 N;\
+             if (hasNormalMap)\
+               N = normalize(varNorm + texture(samp1, tc).xyz * 2 - 1);\
+             else \
+               N = normalize(varNorm);\
+             vec3 V = normalize(-varPos);\
+             vec3 R = normalize(reflect(-L,N));\
+             float cosTheta = dot(L,N);\
+             float cosPhi = dot(R,V);\
+             \
+             vec3 amb = ((GlobalAmbient) + (texture(samp, tc) * light.ambient * material.ambient)/1).xyz;\
+             vec3 dif = light.diffuse.xyz * material.diffuse.xyz * texture(samp, tc).xyz * max(0.0, cosTheta);\
+             vec3 spc = light.spec.xyz * material.spec.xyz * pow(max(0.0, cosPhi), material.shininess);\
              if(hasTexture)\
-               frag_color = texture(sp, tc);\
+               frag_color = vec4(amb + dif + spc, 1);\
             \
             else \
 			   frag_color = vec4(color.rgb, 1.0);\

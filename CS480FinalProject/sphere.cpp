@@ -144,7 +144,15 @@ void Sphere::setupBuffers() {
 
     glGenBuffers(1, &VB);
     glBindBuffer(GL_ARRAY_BUFFER, VB);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), &Vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(vertices[0]), &vertices[0], GL_STATIC_DRAW);
+
+    glGenBuffers(1, &TB);
+    glBindBuffer(GL_ARRAY_BUFFER, TB);
+    glBufferData(GL_ARRAY_BUFFER, texCoords.size() * sizeof(texCoords[0]), &texCoords[0], GL_STATIC_DRAW);
+
+    glGenBuffers(1, &NB);
+    glBindBuffer(GL_ARRAY_BUFFER, NB);
+    glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(normals[0]), &normals[0], GL_STATIC_DRAW);
 
     glGenBuffers(1, &IB);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
@@ -205,3 +213,11 @@ std::vector<int> Sphere::getIndices() { return indices; }
 std::vector<glm::vec3> Sphere::getVertices() { return vertices; }
 std::vector<glm::vec2> Sphere::getTexCoords() { return texCoords; }
 std::vector<glm::vec3> Sphere::getNormals() { return normals; }
+
+bool Sphere::loadTexture(const char* fname, int textureType)
+{
+    /*if (textureType == aiTextureType_DIFFUSE) {
+
+    }*/
+    return true;
+}

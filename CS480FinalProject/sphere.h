@@ -28,6 +28,8 @@ public:
     GLuint getTextureID() { return m_texture->getTextureID(); }
     GLuint getNormalID() { return m_normal->getTextureID(); }
     
+    bool loadTexture(const char* fname, int textureType);
+
     bool hasTex;
     bool hasNormal;
 
@@ -38,6 +40,8 @@ private:
     std::vector<unsigned int> Indices;
     GLuint VB;
     GLuint IB;
+    GLuint TB;
+    GLuint NB;
     Texture* m_texture;
     Texture* m_normal;
 
