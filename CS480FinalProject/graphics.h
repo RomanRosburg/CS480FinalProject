@@ -52,6 +52,7 @@ class Graphics
     GLint m_colorAttrib;
     GLint m_tcAttrib;
     GLint m_hasTexture;
+    GLint m_hasN;
 
     /// New shader variables
     GLuint globalAmbLoc;
@@ -67,7 +68,7 @@ class Graphics
     Sphere* m_mars;
 
     // System 2
-    Sphere* m_Jupiter;
+    Sphere* m_jupiter;
 
     // Player Ship
     Mesh* m_mesh;

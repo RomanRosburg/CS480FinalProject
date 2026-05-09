@@ -103,7 +103,7 @@ void Engine::Display(GLFWwindow* window, double time) {
 
     m_graphics->Render();
     m_window->Swap();
-    m_graphics->HierarchicalUpdate2(time);
+    //m_graphics->HierarchicalUpdate2(time);
 }
 
 static void cursorPositionCallBack(GLFWwindow* window, double xpos, double ypos) {

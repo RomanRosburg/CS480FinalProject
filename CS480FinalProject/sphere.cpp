@@ -101,8 +101,8 @@ void Sphere::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, G
 
     // Set vertex attribute pointers to the load correct data. Update here to load the correct attributes.
     glVertexAttribPointer(posAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0]), 0);
-    glVertexAttribPointer(colAttribLoc, 2, GL_FLOAT, GL_FALSE, sizeof(texCoords[0]), 0);
-    glVertexAttribPointer(tcAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(normals[0]), 0);
+    glVertexAttribPointer(tcAttribLoc, 2, GL_FLOAT, GL_FALSE, sizeof(texCoords[0]), 0);
+    glVertexAttribPointer(colAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(normals[0]), 0);
 
     // If has texture, set up texture unit(s): update here for texture rendering
     if (m_texture != NULL) {
