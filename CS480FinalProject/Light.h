@@ -7,6 +7,14 @@ public:
 	Light(glm::mat4 viewMatrix);
 	Light(glm::mat4 viewMatrix, glm::vec3 lightPosition, glm::vec4 lightDiffuse, glm::vec4 lightAmb, glm::vec4 lightSpecular, glm::vec4 gAmb);
 
+	void updatePosition(glm::mat4 viewMatrix, glm::vec3 lightPosition);
+
+	float* getDiffuse() { return m_lightDiffuse; }
+	float* getLightAmbient() { return m_lightlAmbient; }
+	float* getSpecular() { return m_lightSpecular; }
+	float* getGlobalAmbient() { return m_globalAmbient; }
+	float* getLightPosViewSpace() { return m_lightPositionViewSpace; }
+
 private:
 	// Positioning
 	glm::vec3 m_lightPosition;

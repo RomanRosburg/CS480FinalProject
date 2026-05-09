@@ -324,6 +324,42 @@ bool Graphics::collectShPrLocs() {
 		anyProblem = false;
 	}
 
+	/// New Shader Vars for normals and lighting
+	globalAmbLoc = m_shader->GetUniformLocation("GlobalAmbient");
+	if (globalAmbLoc == INVALID_UNIFORM_LOCATION) {
+		printf("globalAmbLoc uniform not found\n");
+		anyProblem = false;
+	}
+	glProgramUniform4fv(m_shader->getShaderProgram(), globalAmbLoc, 1, m_light->getGlobalAmbient());
+
+	lightALoc = m_shader->GetUniformLocation("light.ambient");
+	if (lightALoc == INVALID_UNIFORM_LOCATION) {
+		printf("lightALoc uniform not found\n");
+		anyProblem = false;
+	}
+	glProgramUniform4fv(m_shader->getShaderProgram(), lightALoc, 1, m_light->getLightAmbient());
+
+	lightDLoc = m_shader->GetUniformLocation("light.diffuse");
+	if (lightDLoc == INVALID_UNIFORM_LOCATION) {
+		printf("lightDLoc uniform not found\n");
+		anyProblem = false;
+	}
+	glProgramUniform4fv(m_shader->getShaderProgram(), lightDLoc, 1, m_light->getDiffuse());
+
+	lightSLoc = m_shader->GetUniformLocation("light.spec");
+	if (lightSLoc == INVALID_UNIFORM_LOCATION) {
+		printf("lightSLoc uniform not found\n");
+		anyProblem = false;
+	}
+	glProgramUniform4fv(m_shader->getShaderProgram(), lightSLoc, 1, m_light->getSpecular());
+
+	lightPosLoc = m_shader->GetUniformLocation("light.position");
+	if (lightPosLoc == INVALID_UNIFORM_LOCATION) {
+		printf("lightPosLoc uniform not found\n");
+		anyProblem = false;
+	}
+	glProgramUniform3fv(m_shader->getShaderProgram(), lightPosLoc, 1, m_light->getLightPosViewSpace());
+
 	return anyProblem;
 }
 

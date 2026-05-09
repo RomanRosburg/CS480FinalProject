@@ -11,6 +11,7 @@ using namespace std;
 #include "object.h"
 #include "sphere.h"
 #include "mesh.h"
+#include "Light.h"
 
 #define numVBOs 2;
 #define numIBs 2;
@@ -40,8 +41,9 @@ class Graphics
 
     stack<glm::mat4> modelStack;
 
-    Camera *m_camera;
-    Shader *m_shader;
+    Camera* m_camera;
+    Shader* m_shader;
+    Light*  m_light;
 
     GLint m_projectionMatrix;
     GLint m_viewMatrix;
@@ -50,6 +52,13 @@ class Graphics
     GLint m_colorAttrib;
     GLint m_tcAttrib;
     GLint m_hasTexture;
+
+    /// New shader variables
+    GLuint globalAmbLoc;
+    GLuint lightALoc;
+    GLuint lightDLoc;
+    GLuint lightSLoc;
+    GLuint lightPosLoc;
 
     // Main Sun
     Sphere* m_sun;

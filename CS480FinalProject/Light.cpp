@@ -27,14 +27,23 @@ Light::Light(glm::mat4 viewMatrix, glm::vec3 lightPosition, glm::vec4 lightDiffu
 	m_lightSpecular[3] = lightSpecular.a;
 
 	// Light Ambient
-	m_lightlAmbient[0] = lightAmb.r;
-	m_lightlAmbient[1] = lightAmb.g;
-	m_lightlAmbient[2] = lightAmb.b;
-	m_lightlAmbient[3] = lightAmb.a;
+	m_lightlAmbient[0] = lightAmb[0];
+	m_lightlAmbient[1] = lightAmb[1];
+	m_lightlAmbient[2] = lightAmb[2];
+	m_lightlAmbient[3] = lightAmb[3];
 
 	// Global Ambient
 	m_globalAmbient[0] = gAmb.r;
 	m_globalAmbient[1] = gAmb.g;
 	m_globalAmbient[2] = gAmb.b;
 	m_globalAmbient[3] = gAmb.a;
+}
+
+void Light::updatePosition(glm::mat4 viewMatrix, glm::vec3 lightPosition)
+{
+	m_lightPosition = lightPosition;
+
+	m_lightPositionViewSpace[0] = glm::vec4((viewMatrix * glm::vec4(m_lightPosition, 1.0f))).x;
+	m_lightPositionViewSpace[1] = glm::vec4((viewMatrix * glm::vec4(m_lightPosition, 1.0f))).y;
+	m_lightPositionViewSpace[2] = glm::vec4((viewMatrix * glm::vec4(m_lightPosition, 1.0f))).z;
 }

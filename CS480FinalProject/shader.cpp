@@ -229,3 +229,8 @@ GLint Shader::GetAttribLocation(const char* pAttribName)
 
     return Location;
 }
+
+GLuint Shader::getShaderProgram()
+{
+    return m_shaderProg;
+}
