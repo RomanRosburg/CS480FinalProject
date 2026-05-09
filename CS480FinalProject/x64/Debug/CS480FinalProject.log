@@ -1,23 +1,11 @@
-﻿  shader.cpp
-glfw3.lib(window.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(window.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(input.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(init.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(context.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(win32_thread.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_thread.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(win32_time.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_time.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(platform.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(platform.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(monitor.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(monitor.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(vulkan.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(vulkan.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(win32_init.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_init.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(null_init.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(null_init.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(win32_module.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_module.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_monitor.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(win32_window.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_window.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_joystick.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(wgl_context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(wgl_context.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(egl_context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(egl_context.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(osmesa_context.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(null_monitor.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(null_monitor.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(null_window.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(null_window.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
-glfw3.lib(null_joystick.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(null_joystick.obj)' or at 'C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\glfw3.pdb'; linking object as if no debug info
+﻿  graphics.cpp
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(184,25): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(184,20): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(420,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(420,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(420,36): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(420,41): warning C4305: 'initializing': truncation from 'double' to 'float'
+  sphere.cpp
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\sphere.cpp(119,46): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Generating Code...
   CS480FinalProject.vcxproj -> C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\CS480FinalProject.exe

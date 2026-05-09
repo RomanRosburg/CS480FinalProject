@@ -26,7 +26,7 @@ public:
     std::vector<glm::vec3> getNormals();
 
     GLuint getTextureID() { return m_texture->getTextureID(); }
-    GLuint getNormalID() { return m_normal->getTextureID(); }
+    GLuint getNormalID() { return m_normal->getTextureID(); } // Fucked and idk why
     
     bool loadTexture(const char* fname, int textureType);
 

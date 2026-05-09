@@ -35,6 +35,7 @@ Sphere::Sphere(int prec, const char* fname)
         hasTex = false;
 
     hasNormal = false;
+    m_normal = nullptr;
 }
 
 Sphere::Sphere(int prec, const char* fname, const char* normalMap) { // prec is precision, or number of slices
@@ -87,22 +88,21 @@ void Sphere::Render(GLint positionAttribLoc, GLint colorAttribLoc)
 void Sphere::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, GLint hasTextureLoc)
 {
     glBindVertexArray(vao);
-    // Enable vertex attibute arrays for each vertex attrib
-    glEnableVertexAttribArray(posAttribLoc);
-    glEnableVertexAttribArray(colAttribLoc);
-    glEnableVertexAttribArray(tcAttribLoc);
 
     // Bind your VBO
     glBindBuffer(GL_ARRAY_BUFFER, VB);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0]), 0);
 
-    // Bindings for TB and NB
     glBindBuffer(GL_ARRAY_BUFFER, TB);
-    glBindBuffer(GL_ARRAY_BUFFER, NB);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(texCoords[0]), 0);
 
-    // Set vertex attribute pointers to the load correct data. Update here to load the correct attributes.
-    glVertexAttribPointer(posAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0]), 0);
-    glVertexAttribPointer(tcAttribLoc, 2, GL_FLOAT, GL_FALSE, sizeof(texCoords[0]), 0);
-    glVertexAttribPointer(colAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(normals[0]), 0);
+
+    glBindBuffer(GL_ARRAY_BUFFER, NB);
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(normals[0]), 0);
+
 
     // If has texture, set up texture unit(s): update here for texture rendering
     /*if (m_texture != NULL) {

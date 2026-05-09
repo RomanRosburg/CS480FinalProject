@@ -199,7 +199,7 @@ void Graphics::Render()
 		m_cube->Render(m_positionAttrib,m_colorAttrib);
 	}*/
 
-	if (m_mesh != NULL) {
+	/*if (m_mesh != NULL) {
 		glUniform1i(m_hasTexture, false);
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mesh->GetModel()));
 		if (m_mesh->hasTex) {
@@ -213,7 +213,7 @@ void Graphics::Render()
 			glUniform1i(sampler, 0);
 			m_mesh->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
-	}
+	}*/
 
 	/*if (m_pyramid != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pyramid->GetModel()));
@@ -234,7 +234,7 @@ void Graphics::Render()
 			glUniform1i(m_hasN, false);
 			
 		}
-		if (m_sun->getNormalID()) {
+		/*if (m_sun->getNormalID()) {
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, m_sun->getNormalID());
 			GLuint sampler = m_shader->GetUniformLocation("samp1");
@@ -244,7 +244,7 @@ void Graphics::Render()
 			}
 			glUniform1i(sampler, 1);
 			glUniform1i(m_hasN, true);
-		}
+		}*/
 		glUseProgram(m_shader->getShaderProgram());
 		m_sun->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 	}
