@@ -35,6 +35,7 @@ class Graphics
     std::string ErrorString(GLenum error);
 
     bool collectShPrLocs();
+    bool materialSetup();
     void ComputeTransforms (double dt, std::vector<float> speed, std::vector<float> dist,
         std::vector<float> rotSpeed, glm::vec3 rotVector, std::vector<float> scale, 
         glm::mat4& tmat, glm::mat4& rmat, glm::mat4& smat);
@@ -48,6 +49,7 @@ class Graphics
     GLint m_projectionMatrix;
     GLint m_viewMatrix;
     GLint m_modelMatrix;
+    GLint m_normalMatrix;
     GLint m_positionAttrib;
     GLint m_colorAttrib;
     GLint m_tcAttrib;

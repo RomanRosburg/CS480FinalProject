@@ -56,16 +56,15 @@ bool Shader::AddShader(GLenum ShaderType)
             vec4 spec;\
             vec3 position;\
           };\
+          uniform PositionalLight light;\
+          uniform vec4 GlobalAmbient;\
           struct Material{\
             vec4 ambient;\
             vec4 diffuse;\
             vec4 spec;\
             float shininess;\
           };\
-          \
           uniform Material material;\
-          uniform vec4 GlobalAmbient;\
-          uniform PositionalLight light;\
           uniform mat4 projectionMatrix; \
           uniform mat4 viewMatrix; \
           uniform mat4 modelMatrix; \
@@ -73,17 +72,17 @@ bool Shader::AddShader(GLenum ShaderType)
           \
           uniform bool hasTC;        \
           \
-          layout (binding=0) uniform sampler2D sp; \
-          layout (binding=1) uniform sampler2D sp1; \
+          layout (binding=0) uniform sampler2D samp; \
+          layout (binding=1) uniform sampler2D samp1; \
           \
           void main(void) \
           { \
             vec4 v = vec4(v_position, 1.0); \
             gl_Position = (projectionMatrix * viewMatrix * modelMatrix) * v; \
+            tc = texCoord;\
             varPos = (viewMatrix * modelMatrix * vec4(v_position, 1.0f)).xyz; \
             varLdir = light.position - varPos; \
             varNorm = normMatrix * v_normal; \
-            tc = texCoord;\
           } \
           ";
   }
@@ -91,7 +90,23 @@ bool Shader::AddShader(GLenum ShaderType)
   {
     s = "#version 460\n \
           \
-          uniform sampler2D sp; \
+          layout (binding=0) uniform sampler2D samp; \
+          layout (binding=1) uniform sampler2D samp1; \
+          uniform vec4 GlobalAmbient;\
+          struct Material{\
+            vec4 ambient;\
+            vec4 diffuse;\
+            vec4 spec;\
+            float shininess;\
+          };\
+          struct PositionalLight{\
+            vec4 ambient;\
+            vec4 diffuse;\
+            vec4 spec;\
+            vec3 position;\
+          };\
+          uniform Material material;\
+          uniform PositionalLight light;\
           \
           in vec3 varNorm; \
           in vec3 varLdir;\
@@ -113,17 +128,14 @@ bool Shader::AddShader(GLenum ShaderType)
                N = normalize(varNorm);\
              vec3 V = normalize(-varPos);\
              vec3 R = normalize(reflect(-L,N));\
+             \
              float cosTheta = dot(L,N);\
              float cosPhi = dot(R,V);\
              \
              vec3 amb = ((GlobalAmbient) + (texture(samp, tc) * light.ambient * material.ambient)/1).xyz;\
              vec3 dif = light.diffuse.xyz * material.diffuse.xyz * texture(samp, tc).xyz * max(0.0, cosTheta);\
              vec3 spc = light.spec.xyz * material.spec.xyz * pow(max(0.0, cosPhi), material.shininess);\
-             if(hasTexture)\
-               frag_color = vec4(amb + dif + spc, 1);\
-            \
-            else \
-			   frag_color = vec4(color.rgb, 1.0);\
+             frag_color = vec4(amb + dif + spc, 1);\
           } \
           ";
   }

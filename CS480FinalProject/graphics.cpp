@@ -78,6 +78,10 @@ bool Graphics::Initialize(int width, int height)
 		printf("Some shader attribs not located!\n");
 	}
 
+	if (!materialSetup()) {
+		printf("Some shader mats not working!\n");
+	}
+
 	// Starship
 	m_mesh = new Mesh(glm::vec3(2.0f, 3.0f, -5.0f), "SpaceShip-1\\SpaceShip-1.obj", "SpaceShip-1\\SpaceShip-1.png");
 
@@ -186,6 +190,8 @@ void Graphics::Render()
 	// Send in the projection and view to the shader (stay the same while camera intrinsic(perspective) and extrinsic (view) parameters are the same
 	glUniformMatrix4fv(m_projectionMatrix, 1, GL_FALSE, glm::value_ptr(m_camera->GetProjection()));
 	glUniformMatrix4fv(m_viewMatrix, 1, GL_FALSE, glm::value_ptr(m_camera->GetView()));
+	// TODO: do this for every object?
+	glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_sun->GetModel())))));
 
 	// Render the objects
 	/*if (m_cube != NULL){
@@ -199,7 +205,7 @@ void Graphics::Render()
 		if (m_mesh->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_mesh->getTextureID());
-			GLuint sampler = m_shader->GetUniformLocation("sp");
+			GLuint sampler = m_shader->GetUniformLocation("samp");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
 				printf("Sampler Not found not found\n");
@@ -402,6 +408,33 @@ bool Graphics::collectShPrLocs() {
 		anyProblem = false;
 	}
 	glProgramUniform3fv(m_shader->getShaderProgram(), lightPosLoc, 1, m_light->getLightPosViewSpace());
+
+	return anyProblem;
+}
+
+bool Graphics::materialSetup()
+{
+	bool anyProblem = true;
+
+	// Material 1
+	float matAmbient[4] = { 0.2, 0.2, 0.2, 0.2 };
+	float matDiff[4] = { 1.0, 1.0, 1.0, 1.0 };
+	float matSpec[4] = { 1.0, 1.0, 1.0, 1.0 };
+	float matShininess = 20.0;
+
+	///TODO: add error check later maybe
+	GLuint mAmbLoc = m_shader->GetUniformLocation("material.ambient");
+	glProgramUniform4fv(m_shader->getShaderProgram(), mAmbLoc, 1, matAmbient);
+
+	GLuint mDiffLoc = m_shader->GetUniformLocation("material.diffuse");
+	glProgramUniform4fv(m_shader->getShaderProgram(), mDiffLoc, 1, matDiff);
+
+	GLuint mSpecLoc = m_shader->GetUniformLocation("material.spec");
+	glProgramUniform4fv(m_shader->getShaderProgram(), mSpecLoc, 1, matSpec);
+
+	GLuint mShineLoc = m_shader->GetUniformLocation("material.shininess");
+	glProgramUniform1f(m_shader->getShaderProgram(), mShineLoc, matShininess);
+
 
 	return anyProblem;
 }
