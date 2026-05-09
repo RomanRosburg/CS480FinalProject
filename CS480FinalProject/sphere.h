@@ -16,6 +16,7 @@ public:
 
     Sphere(int prec);
     Sphere(int prec, const char* fname);
+    Sphere(int prec, const char* fname, const char* normalMap);
 
     int getNumVertices();
     int getNumIndices();
@@ -25,8 +26,10 @@ public:
     std::vector<glm::vec3> getNormals();
 
     GLuint getTextureID() { return m_texture->getTextureID(); }
+    GLuint getNormalID() { return m_normal->getTextureID(); }
     
     bool hasTex;
+    bool hasNormal;
 
 private:
     glm::vec3 pivotLocation;
@@ -36,6 +39,7 @@ private:
     GLuint VB;
     GLuint IB;
     Texture* m_texture;
+    Texture* m_normal;
 
 
     GLuint vao;

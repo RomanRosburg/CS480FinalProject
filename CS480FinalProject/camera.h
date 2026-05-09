@@ -17,6 +17,7 @@ class Camera
     void Translate(glm::vec3 translate, double dt);
     void mouseLook(float mouseX, float mouseY);
     void lookAtPlanet();
+    void updateFollow(glm::mat4 model); // Get the Model Matrix of the Ship to follow?
   
   private:
 

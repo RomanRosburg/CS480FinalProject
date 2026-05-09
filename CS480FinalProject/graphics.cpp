@@ -76,18 +76,19 @@ bool Graphics::Initialize(int width, int height)
 	}
 
 	// Starship
-	m_mesh = new Mesh(glm::vec3(2.0f, 3.0f, -5.0f), "assets\\SpaceShip-1.obj", "assets\\SpaceShip-1.png");
+	m_mesh = new Mesh(glm::vec3(2.0f, 3.0f, -5.0f), "SpaceShip-1\\SpaceShip-1.obj", "SpaceShip-1\\SpaceShip-1.png");
 
 	// The Sun
-	m_sphere = new Sphere(64, "assets\\2k_sun.jpg");
+	m_sun = new Sphere(64, "Planetary Textures\\2k_sun.jpg");
 
-	// The Earth
-	m_sphere2 = new Sphere(48, "assets\\2k_earth_daymap.jpg");
+	// System 1 Objects
+	m_mars = new Sphere(48, "Planetary Textures\\Mars.jpg", "Planetary Textures\\Mars-n.jpg");
 	
-	// The moon
-	m_sphere3 = new Sphere(48, "assets\\2k_moon.jpg");
+	// System 2 Objects
+	m_Jupiter = new Sphere(48, "Planetary Textures\\Jupiter.jpg", "Planetary Textures\\Jupiter-n.jpg");
 
-
+	// Asteroid Belt objects(Need to be instanced)
+	m_ceres = new Sphere(20, "Planetary Textures\\Ceres.jpg", "Planetary Textures\\Ceres-n.jpg");
 
 	//enable depth testing
 	glEnable(GL_DEPTH_TEST);
@@ -106,8 +107,8 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 	modelStack.push(modelStack.top());		// The sun origin
 	modelStack.top() *= glm::rotate(glm::mat4(1.0f), (float)dt, glm::vec3(0.f, 1.f, 0.f));
 	modelStack.top() *= glm::scale(glm::vec3(.75, .75, .75));
-	if (m_sphere != NULL)
-		m_sphere->Update(modelStack.top());
+	if (m_sun != NULL)
+		m_sun->Update(modelStack.top());
 	modelStack.pop(); // back to sun's positional transformation
 
 	// position of the first planet
@@ -121,8 +122,8 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 	modelStack.push(modelStack.top());			// store planet coordinate
 	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
 	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
-	if (m_planet != NULL)
-		m_planet->Update(modelStack.top());
+	if (m_mars != NULL)
+		m_mars->Update(modelStack.top());
 	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
 
 	// position of the first moon
@@ -138,8 +139,8 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
 	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
 
-	if (m_ship != NULL)
-		m_ship->Update(modelStack.top());
+	if (m_mesh != NULL)
+		m_mesh->Update(modelStack.top());
 
 
 	modelStack.pop(); 	//back to the planet coordinate
@@ -194,7 +195,7 @@ void Graphics::Render()
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mesh->GetModel()));
 		if (m_mesh->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, m_sphere->getTextureID());
+			glBindTexture(GL_TEXTURE_2D, m_mesh->getTextureID());
 			GLuint sampler = m_shader->GetUniformLocation("sp");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
@@ -210,50 +211,50 @@ void Graphics::Render()
 		m_pyramid->Render(m_positionAttrib, m_colorAttrib);
 	}*/
 
-	if (m_sphere != NULL) {
-		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sphere->GetModel()));
-		if (m_sphere->hasTex) {
+	if (m_sun != NULL) {
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
+		if (m_sun->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, m_sphere->getTextureID());
+			glBindTexture(GL_TEXTURE_2D, m_sun->getTextureID());
 			GLuint sampler = m_shader->GetUniformLocation("sp");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
 				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
-			m_sphere->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			m_sun->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
 
-	if (m_sphere2 != NULL) {
-		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sphere2->GetModel()));
-		if (m_sphere2->hasTex) {
+	if (m_mars != NULL) {
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mars->GetModel()));
+		if (m_mars->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, m_sphere2->getTextureID());
+			glBindTexture(GL_TEXTURE_2D, m_mars->getTextureID());
 			GLuint sampler = m_shader->GetUniformLocation("sp");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
 				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
-			m_sphere2->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			m_mars->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
 
 
-	// Render Moon
-	if (m_sphere3 != NULL) {
-		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sphere3->GetModel()));
-		if (m_sphere3->hasTex) {
+	// Render Jupiter
+	if (m_Jupiter != NULL) {
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_Jupiter->GetModel()));
+		if (m_Jupiter->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, m_sphere3->getTextureID());
+			glBindTexture(GL_TEXTURE_2D, m_Jupiter->getTextureID());
 			GLuint sampler = m_shader->GetUniformLocation("sp");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
 				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
-			m_sphere3->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			m_Jupiter->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
 

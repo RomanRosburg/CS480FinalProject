@@ -6,6 +6,8 @@ Sphere::Sphere()
     setupVertices();
     setupBuffers();
     //setupModelMatrix(glm::vec3(0., 0., 0.), 0., 1.);
+    hasTex = false;
+    hasNormal = false;
 }
 
 Sphere::Sphere(int prec) { // prec is precision, or number of slices
@@ -15,9 +17,27 @@ Sphere::Sphere(int prec) { // prec is precision, or number of slices
     setupBuffers();
     //setupModelMatrix(glm::vec3(0., 0., 0.), 0., 1.);
     hasTex = false;
+    hasNormal = false;
 }
 
-Sphere::Sphere(int prec, const char* fname) { // prec is precision, or number of slices
+Sphere::Sphere(int prec, const char* fname)
+{
+    init(prec);
+    setupVertices();
+    setupBuffers();
+    //setupModelMatrix(glm::vec3(0., 0., 0.), 0., 1.);
+
+        // load texture from file
+    m_texture = new Texture(fname);
+    if (m_texture)
+        hasTex = true;
+    else
+        hasTex = false;
+
+    hasNormal = false;
+}
+
+Sphere::Sphere(int prec, const char* fname, const char* normalMap) { // prec is precision, or number of slices
 
     init(prec);
     setupVertices();
@@ -30,6 +50,13 @@ Sphere::Sphere(int prec, const char* fname) { // prec is precision, or number of
         hasTex = true;
     else
         hasTex = false;
+
+    // load normal from file
+    m_normal = new Texture(normalMap);
+    if (m_normal)
+        hasNormal = true;
+    else
+        hasNormal = false;
 }
 
 
@@ -69,6 +96,9 @@ void Sphere::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, G
     glBindBuffer(GL_ARRAY_BUFFER, VB);
 
     // Set vertex attribute pointers to the load correct data. Update here to load the correct attributes.
+    glVertexAttribPointer(posAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+    glVertexAttribPointer(colAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+    glVertexAttribPointer(tcAttribLoc, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texcoord));
 
     // If has texture, set up texture unit(s): update here for texture rendering
     if (m_texture != NULL) {

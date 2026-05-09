@@ -74,6 +74,10 @@ void Camera::lookAtPlanet()
 {
 }
 
+void Camera::updateFollow(glm::mat4 model)
+{
+}
+
 void Camera::updateCamVectors()
 {
     // Calc new camera front vectors

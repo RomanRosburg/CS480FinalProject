@@ -52,18 +52,21 @@ class Graphics
     GLint m_hasTexture;
 
     // Main Sun
-    Sphere* m_sphere;
+    Sphere* m_sun;
 
     // System 1
-    Sphere* m_sphere2;
+    Sphere* m_mars;
 
     // System 2
-    Sphere* m_sphere3;
+    Sphere* m_Jupiter;
 
     // Player Ship
     Mesh* m_mesh;
 
+    // Asteroid Belt
+    Sphere* m_ceres;
 
+    Mesh* m_skybox;
 
 };
 

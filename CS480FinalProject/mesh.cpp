@@ -115,6 +115,9 @@ void Mesh::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, GLi
 	glBindBuffer(GL_ARRAY_BUFFER, VB);
 
 	// Set vertex attribute pointers to the load correct data
+	glVertexAttribPointer(posAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+	glVertexAttribPointer(colAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+	glVertexAttribPointer(tcAttribLoc, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texcoord));
 
 	// If has texture, set up texture unit(s) Update here to activate and assign texture unit
 	if (m_texture != NULL) {
