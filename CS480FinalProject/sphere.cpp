@@ -86,31 +86,23 @@ void Sphere::Render(GLint positionAttribLoc, GLint colorAttribLoc)
 }
 
 void Sphere::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, GLint hasTextureLoc)
-{
+{   // TODO: SOMETHING WRONG HERE
     glBindVertexArray(vao);
 
     // Bind your VBO
     glBindBuffer(GL_ARRAY_BUFFER, VB);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0]), 0);
+    glEnableVertexAttribArray(posAttribLoc);
+    glVertexAttribPointer(posAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0]), (void*)0);
+    
 
     glBindBuffer(GL_ARRAY_BUFFER, TB);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(texCoords[0]), 0);
+    glEnableVertexAttribArray(tcAttribLoc);
+    glVertexAttribPointer(tcAttribLoc, 2, GL_FLOAT, GL_FALSE, sizeof(texCoords[0]), (void*)0);
 
 
     glBindBuffer(GL_ARRAY_BUFFER, NB);
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(normals[0]), 0);
-
-
-    // If has texture, set up texture unit(s): update here for texture rendering
-    /*if (m_texture != NULL) {
-        glUniform1i(hasTextureLoc, true);
-    }
-    else
-        glUniform1i(hasTextureLoc, false);*/
-
+    glEnableVertexAttribArray(colAttribLoc);
+    glVertexAttribPointer(colAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(normals[0]), (void*)0);
 
     // Bind your Element Array
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
@@ -120,8 +112,8 @@ void Sphere::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, G
 
     // Disable vertex arrays
     glDisableVertexAttribArray(posAttribLoc);
-    glDisableVertexAttribArray(colAttribLoc);
     glDisableVertexAttribArray(tcAttribLoc);
+    glDisableVertexAttribArray(colAttribLoc);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
@@ -159,8 +151,8 @@ void Sphere::setupBuffers() {
     glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(normals[0]), &normals[0], GL_STATIC_DRAW);
 
     glGenBuffers(1, &IB);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), &indices[0], GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, IB);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), &indices[0], GL_STATIC_DRAW);
 }
 
 void Sphere::setupModelMatrix(glm::vec3 pivot, float angle, float scale) {

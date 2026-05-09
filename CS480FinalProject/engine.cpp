@@ -80,7 +80,7 @@ void Engine::cursor_position_callback(GLFWwindow* window, double xpos, double yp
     std::cout << "Position: (" << xpos << ":" << ypos << ")";
 }
 
-unsigned int Engine::getDT()
+double Engine::getDT()
 {
   //long long TimeNowMillis = GetCurrentTimeMillis();
   //assert(TimeNowMillis >= m_currentTimeMillis);
@@ -103,7 +103,7 @@ void Engine::Display(GLFWwindow* window, double time) {
 
     m_graphics->Render();
     m_window->Swap();
-    //m_graphics->HierarchicalUpdate2(time);
+    m_graphics->HierarchicalUpdateSystem1(time);
 }
 
 static void cursorPositionCallBack(GLFWwindow* window, double xpos, double ypos) {

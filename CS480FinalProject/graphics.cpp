@@ -192,6 +192,7 @@ void Graphics::Render()
 	glUniformMatrix4fv(m_viewMatrix, 1, GL_FALSE, glm::value_ptr(m_camera->GetView()));
 	// TODO: do this for every object?
 	glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_sun->GetModel())))));
+	glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
 
 	// Render the objects
 	/*if (m_cube != NULL){
@@ -199,7 +200,7 @@ void Graphics::Render()
 		m_cube->Render(m_positionAttrib,m_colorAttrib);
 	}*/
 
-	/*if (m_mesh != NULL) {
+	if (m_mesh != NULL) {
 		glUniform1i(m_hasTexture, false);
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mesh->GetModel()));
 		if (m_mesh->hasTex) {
@@ -213,7 +214,7 @@ void Graphics::Render()
 			glUniform1i(sampler, 0);
 			m_mesh->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
-	}*/
+	}
 
 	/*if (m_pyramid != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pyramid->GetModel()));
@@ -234,7 +235,7 @@ void Graphics::Render()
 			glUniform1i(m_hasN, false);
 			
 		}
-		/*if (m_sun->getNormalID()) {
+		if (m_sun->hasNormal) {
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, m_sun->getNormalID());
 			GLuint sampler = m_shader->GetUniformLocation("samp1");
@@ -244,12 +245,13 @@ void Graphics::Render()
 			}
 			glUniform1i(sampler, 1);
 			glUniform1i(m_hasN, true);
-		}*/
+		}
 		glUseProgram(m_shader->getShaderProgram());
 		m_sun->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 	}
 
 	if (m_mars != NULL) {
+		glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_mars->GetModel())))));
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mars->GetModel()));
 		if (m_mars->getTextureID()) {
 			glActiveTexture(GL_TEXTURE0);
@@ -276,10 +278,12 @@ void Graphics::Render()
 		}
 		glUseProgram(m_shader->getShaderProgram());
 		m_mars->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
-		}
+	}
 
 	// Render Jupiter
 	if (m_jupiter != NULL) {
+		glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_jupiter->GetModel())))));
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_jupiter->GetModel()));
 		if (m_jupiter->getTextureID()) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_jupiter->getTextureID());

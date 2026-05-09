@@ -36,7 +36,7 @@ Light::Light(glm::mat4 viewMatrix)
 	m_globalAmbient[0] = 1.0;
 	m_globalAmbient[1] = 1.0;
 	m_globalAmbient[2] = 1.0;
-	m_globalAmbient[3] = 1.0;
+	m_globalAmbient[3] = 0.5;
 
 }
 

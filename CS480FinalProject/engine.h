@@ -17,7 +17,7 @@ class Engine
     bool Initialize();
     void Run();
     void ProcessInput();
-    unsigned int getDT();
+    double getDT();
     long long GetCurrentTimeMillis();
     void Display(GLFWwindow*, double);
     static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);

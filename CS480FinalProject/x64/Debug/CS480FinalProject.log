@@ -1,11 +1,8 @@
 ﻿  graphics.cpp
 C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(184,25): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
 C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(184,20): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(420,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(420,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(420,36): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(420,41): warning C4305: 'initializing': truncation from 'double' to 'float'
-  sphere.cpp
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\sphere.cpp(119,46): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  Generating Code...
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(424,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(424,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(424,36): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(424,41): warning C4305: 'initializing': truncation from 'double' to 'float'
   CS480FinalProject.vcxproj -> C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\CS480FinalProject.exe
