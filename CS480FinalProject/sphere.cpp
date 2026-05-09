@@ -105,18 +105,18 @@ void Sphere::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, G
     glVertexAttribPointer(colAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(normals[0]), 0);
 
     // If has texture, set up texture unit(s): update here for texture rendering
-    if (m_texture != NULL) {
+    /*if (m_texture != NULL) {
         glUniform1i(hasTextureLoc, true);
     }
     else
-        glUniform1i(hasTextureLoc, false);
+        glUniform1i(hasTextureLoc, false);*/
 
 
     // Bind your Element Array
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
 
     // Render
-    glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 
     // Disable vertex arrays
     glDisableVertexAttribArray(posAttribLoc);
@@ -127,17 +127,17 @@ void Sphere::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, G
 
 
 void Sphere::setupVertices() {
-    std::vector<int> ind = getIndices();
-    std::vector<glm::vec3> vert = getVertices();
-    std::vector<glm::vec2> tex = getTexCoords();
-    std::vector<glm::vec3> norm = getNormals();
+    //std::vector<int> ind = getIndices();
+    //std::vector<glm::vec3> vert = getVertices();
+    //std::vector<glm::vec2> tex = getTexCoords();
+    //std::vector<glm::vec3> norm = getNormals();
 
 
-    int numIndices = getNumIndices();
-    for (int i = 0; i < numIndices; i++) {
-        Vertices.push_back(Vertex(/* send correct attibutes here*/));
-        Indices.push_back(i);
-    }
+    //int numIndices = getNumIndices();
+    //for (int i = 0; i < numIndices; i++) {
+    //    Vertices.push_back(Vertex(/* send correct attibutes here*/));
+    //    Indices.push_back(i);
+    //}
 }
 
 
@@ -160,7 +160,7 @@ void Sphere::setupBuffers() {
 
     glGenBuffers(1, &IB);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * Indices.size(), &Indices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), &indices[0], GL_STATIC_DRAW);
 }
 
 void Sphere::setupModelMatrix(glm::vec3 pivot, float angle, float scale) {

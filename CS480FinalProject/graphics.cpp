@@ -41,6 +41,9 @@ bool Graphics::Initialize(int width, int height)
 		return false;
 	}
 
+	// Init Light
+	m_light = new Light(m_camera->GetView());
+
 	// Set up the shaders
 	m_shader = new Shader();
 	if (!m_shader->Initialize())

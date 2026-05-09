@@ -34,6 +34,8 @@ private:
     std::vector<unsigned int> Indices;
     GLuint VB;
     GLuint IB;
+    GLuint TB;
+    GLuint NB;
 
     Texture* m_texture;
 

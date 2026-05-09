@@ -1,5 +1,45 @@
 #include "Light.h"
 
+Light::Light(glm::mat4 viewMatrix)
+{
+	m_lightPosition = glm::vec3(0.,0.,0.);
+
+	m_lightPositionViewSpace[0] = glm::vec4((viewMatrix * glm::vec4(m_lightPosition, 1.0f))).x;
+	m_lightPositionViewSpace[1] = glm::vec4((viewMatrix * glm::vec4(m_lightPosition, 1.0f))).y;
+	m_lightPositionViewSpace[2] = glm::vec4((viewMatrix * glm::vec4(m_lightPosition, 1.0f))).z;
+
+	// Ambient
+	m_lightlAmbient[0] = 1.0;
+	m_lightlAmbient[1] = 1.0;
+	m_lightlAmbient[2] = 1.0;
+	m_lightlAmbient[3] = 1.0;
+
+	// Diffuse
+	m_lightDiffuse[0] = 1.0;
+	m_lightDiffuse[1] = 0.5;
+	m_lightDiffuse[2] = 1.0;
+	m_lightDiffuse[3] = 1.0;
+
+	// Specular
+	m_lightSpecular[0] = 1.0;
+	m_lightSpecular[1] = 1.0;
+	m_lightSpecular[2] = 1.0;
+	m_lightSpecular[3] = 1.0;
+
+	// Light Ambient
+	m_lightlAmbient[0] = 1.0;
+	m_lightlAmbient[1] = 1.0;
+	m_lightlAmbient[2] = 1.0;
+	m_lightlAmbient[3] = 1.0;
+
+	// Global Ambient
+	m_globalAmbient[0] = 1.0;
+	m_globalAmbient[1] = 1.0;
+	m_globalAmbient[2] = 1.0;
+	m_globalAmbient[3] = 1.0;
+
+}
+
 Light::Light(glm::mat4 viewMatrix, glm::vec3 lightPosition, glm::vec4 lightDiffuse, glm::vec4 lightAmb, glm::vec4 lightSpecular, glm::vec4 gAmb)
 {
 	m_lightPosition = lightPosition;

@@ -120,13 +120,13 @@ void Mesh::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, GLi
 	glVertexAttribPointer(tcAttribLoc, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texcoord));
 
 	// If has texture, set up texture unit(s) Update here to activate and assign texture unit
-	if (m_texture != NULL) {
+	/*if (m_texture != NULL) {
 		glUniform1i(hasTextureLoc, true);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, getTextureID());
 	}
 	else
-		glUniform1i(hasTextureLoc, false);
+		glUniform1i(hasTextureLoc, false);*/
 
 
 	// Bind your Element Array
@@ -153,6 +153,14 @@ bool Mesh::InitBuffers() {
 	glBindBuffer(GL_ARRAY_BUFFER, VB);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), &Vertices[0], GL_STATIC_DRAW);
 
+
+	glGenBuffers(1, &TB);
+	glBindBuffer(GL_ARRAY_BUFFER, TB);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), &Vertices[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &NB);
+	glBindBuffer(GL_ARRAY_BUFFER, NB);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), &Vertices[0], GL_STATIC_DRAW);
 
 	glGenBuffers(1, &IB);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
@@ -191,4 +199,5 @@ bool Mesh::loadModelFromFile(const char* path) {
 	for (int i = 0; i < Vertices.size(); i++) {
 		Indices.push_back(i);
 	}
+	return true;
 }
