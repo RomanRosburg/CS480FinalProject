@@ -43,7 +43,7 @@ Sphere::Sphere(int prec, const char* fname, const char* normalMap) { // prec is 
     init(prec);
     setupVertices();
     setupBuffers();
-    //setupModelMatrix(glm::vec3(0., 0., 0.), 0., 1.);
+    setupModelMatrix(glm::vec3(0., 0., 0.), 0., 1.);
 
         // load texture from file
     m_texture = new Texture(fname);

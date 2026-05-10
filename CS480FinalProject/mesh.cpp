@@ -148,7 +148,7 @@ bool Mesh::InitBuffers() {
 	// For OpenGL 3
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
-
+	/// TODO: FIX ALL WRONG
 	glGenBuffers(1, &VB);
 	glBindBuffer(GL_ARRAY_BUFFER, VB);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), &Vertices[0], GL_STATIC_DRAW);

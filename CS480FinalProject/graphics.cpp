@@ -190,9 +190,7 @@ void Graphics::Render()
 	// Send in the projection and view to the shader (stay the same while camera intrinsic(perspective) and extrinsic (view) parameters are the same
 	glUniformMatrix4fv(m_projectionMatrix, 1, GL_FALSE, glm::value_ptr(m_camera->GetProjection()));
 	glUniformMatrix4fv(m_viewMatrix, 1, GL_FALSE, glm::value_ptr(m_camera->GetView()));
-	// TODO: do this for every object?
-	glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_sun->GetModel())))));
-	glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
+	
 
 	// Render the objects
 	/*if (m_cube != NULL){
@@ -212,7 +210,7 @@ void Graphics::Render()
 				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
-			m_mesh->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			//m_mesh->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
 
@@ -222,6 +220,7 @@ void Graphics::Render()
 	}*/
 	m_hasN = m_shader->GetUniformLocation("hasNormalMap");
 	if (m_sun != NULL) {
+		glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_sun->GetModel())))));
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
 		if (m_sun->getTextureID()) {
 			glActiveTexture(GL_TEXTURE0);
@@ -229,11 +228,11 @@ void Graphics::Render()
 			GLuint sampler = m_shader->GetUniformLocation("samp");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
-				printf("Sampler-N Not found not found\n");
+				printf("Sampler Not found not found\n");
 			}
+			glUseProgram(m_shader->getShaderProgram());
 			glUniform1i(sampler, 0);
 			glUniform1i(m_hasN, false);
-			
 		}
 		if (m_sun->hasNormal) {
 			glActiveTexture(GL_TEXTURE1);
@@ -241,12 +240,12 @@ void Graphics::Render()
 			GLuint sampler = m_shader->GetUniformLocation("samp1");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
-				printf("Sampler Not found not found\n");
+				printf("Sampler-N Not found not found\n");
 			}
+			glUseProgram(m_shader->getShaderProgram());
 			glUniform1i(sampler, 1);
 			glUniform1i(m_hasN, true);
 		}
-		glUseProgram(m_shader->getShaderProgram());
 		m_sun->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 	}
 
@@ -259,8 +258,9 @@ void Graphics::Render()
 			GLuint sampler = m_shader->GetUniformLocation("samp");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
-				printf("Sampler-N Not found not found\n");
+				printf("Sampler Not found not found\n");
 			}
+			glUseProgram(m_shader->getShaderProgram());
 			glUniform1i(sampler, 0);
 			glUniform1i(m_hasN, false);
 
@@ -271,12 +271,12 @@ void Graphics::Render()
 			GLuint sampler = m_shader->GetUniformLocation("samp1");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
-				printf("Sampler Not found not found\n");
+				printf("Sampler-N Not found not found\n");
 			}
+			glUseProgram(m_shader->getShaderProgram());
 			glUniform1i(sampler, 1);
 			glUniform1i(m_hasN, true);
 		}
-		glUseProgram(m_shader->getShaderProgram());
 		m_mars->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 	}
 
@@ -290,7 +290,7 @@ void Graphics::Render()
 			GLuint sampler = m_shader->GetUniformLocation("samp");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
-				printf("Sampler-N Not found not found\n");
+				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
 			glUniform1i(m_hasN, false);
@@ -298,11 +298,12 @@ void Graphics::Render()
 		}
 		if (m_jupiter->getNormalID()) {
 			glActiveTexture(GL_TEXTURE1);
+			//cout << m_jupiter->getNormalID() << endl;
 			glBindTexture(GL_TEXTURE_2D, m_jupiter->getNormalID());
 			GLuint sampler = m_shader->GetUniformLocation("samp1");
 			if (sampler == INVALID_UNIFORM_LOCATION)
 			{
-				printf("Sampler Not found not found\n");
+				printf("Sampler-N Not found not found\n");
 			}
 			glUniform1i(sampler, 1);
 			glUniform1i(m_hasN, true);
@@ -344,6 +345,13 @@ bool Graphics::collectShPrLocs() {
 	if (m_modelMatrix == INVALID_UNIFORM_LOCATION)
 	{
 		printf("m_modelMatrix not found\n");
+		anyProblem = false;
+	}
+
+	m_normalMatrix = m_shader->GetUniformLocation("normMatrix");
+	if (m_modelMatrix == INVALID_UNIFORM_LOCATION)
+	{
+		printf("m_normalMatrix not found\n");
 		anyProblem = false;
 	}
 
