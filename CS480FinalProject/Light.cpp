@@ -12,17 +12,17 @@ Light::Light(glm::mat4 viewMatrix)
 	m_lightlAmbient[0] = 1.0;
 	m_lightlAmbient[1] = 1.0;
 	m_lightlAmbient[2] = 1.0;
-	m_lightlAmbient[3] = 1.0;
+	m_lightlAmbient[3] = 0.0;
 
 	// Diffuse
 	m_lightDiffuse[0] = 1.0;
-	m_lightDiffuse[1] = 0.5;
+	m_lightDiffuse[1] = 1.0;
 	m_lightDiffuse[2] = 1.0;
 	m_lightDiffuse[3] = 1.0;
 
 	// Specular
-	m_lightSpecular[0] = 1.0;
-	m_lightSpecular[1] = 1.0;
+	m_lightSpecular[0] = 0.0;
+	m_lightSpecular[1] = 0.0;
 	m_lightSpecular[2] = 1.0;
 	m_lightSpecular[3] = 1.0;
 
@@ -33,10 +33,10 @@ Light::Light(glm::mat4 viewMatrix)
 	m_lightlAmbient[3] = 1.0;
 
 	// Global Ambient
-	m_globalAmbient[0] = 1.0;
-	m_globalAmbient[1] = 1.0;
-	m_globalAmbient[2] = 1.0;
-	m_globalAmbient[3] = 0.5;
+	m_globalAmbient[0] = 0.1;
+	m_globalAmbient[1] = 0.1;
+	m_globalAmbient[2] = 0.1;
+	m_globalAmbient[3] = 1.0;
 
 }
 

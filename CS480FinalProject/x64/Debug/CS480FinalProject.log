@@ -1,8 +1,5 @@
-﻿  graphics.cpp
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(184,25): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(184,20): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(432,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(432,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(432,36): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(432,41): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  Light.cpp
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\Light.cpp(36,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\Light.cpp(37,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\Light.cpp(38,23): warning C4305: '=': truncation from 'double' to 'float'
   CS480FinalProject.vcxproj -> C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\CS480FinalProject.exe
