@@ -63,20 +63,34 @@ class Graphics
     GLuint lightSLoc;
     GLuint lightPosLoc;
 
-    // Main Sun
+    /// Planets
+    Sphere* m_venus;
+    Sphere* m_mercury;
+    // Saturn + ring
+    Sphere* m_saturn;
+    Mesh* m_saturnRing; // Potentially create a circle mesh for saturn?
+    Sphere* m_mars;
+    Sphere* m_jupiter;
+    // Earth + moon
+    Sphere* m_earth;
+    Sphere* m_moon;
+
+    Sphere* m_neptune;
+    Sphere* m_uranus;
+
+    /// Sun
     Sphere* m_sun;
 
-    // System 1
-    Sphere* m_mars;
-
-    // System 2
-    Sphere* m_jupiter;
+    /// Asteroids/Other bodies(dwarf planets, comets)
+    Sphere* m_ceres;
+    Sphere* m_eris;
+    Sphere* m_haumea;
 
     // Player Ship
     Mesh* m_mesh;
 
-    // Asteroid Belt
-    Sphere* m_ceres;
+    // Cubemap
+    Object* m_cubemap;
 
     Mesh* m_skybox;
 

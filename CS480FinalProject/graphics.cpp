@@ -43,6 +43,7 @@ bool Graphics::Initialize(int width, int height)
 
 	// Init Light
 	m_light = new Light(m_camera->GetView());
+	m_light->updatePosition(m_camera->GetView(), glm::vec3(10., 0., 0.));
 
 	// Set up the shaders
 	m_shader = new Shader();
@@ -88,14 +89,24 @@ bool Graphics::Initialize(int width, int height)
 	// The Sun
 	m_sun = new Sphere(64, "Planetary Textures\\2k_sun.jpg");
 
-	// System 1 Objects
+	// Planets
 	m_mars = new Sphere(48, "Planetary Textures\\Mars.jpg", "Planetary Textures\\Mars-n.jpg");
-	
-	// System 2 Objects
-	m_jupiter = new Sphere(48, "Planetary Textures\\Jupiter.jpg", "Planetary Textures\\Jupiter-n.jpg");
+	m_mercury = new Sphere(64, "Planetary Textures\\Mercury.jpg", "Planetary Textures\\Mercury-n.jpg");
 
-	// Asteroid Belt objects(Need to be instanced)
+	// Earth System
+	m_earth = new Sphere(64, "Planetary Textures\\2k_earth_daymap.jpg", "Planetary Textures\\2k_earth_daymap-n.jpg");
+	m_moon = new Sphere(48, "Planetary Textures\\2k_Moon.jpg", "Planetary Textures\\2k_Moon-n.jpg");
+
+	m_venus = new Sphere(64, "Planetary Textures\\Venus.jpg", "Planetary Textures\\Venus-n.jpg");
+	m_neptune = new Sphere(64, "Planetary Textures\\Neptune.jpg", "Planetary Textures\\Neptune-n.jpg");
+	m_saturn = new Sphere(64, "Planetary Textures\\Saturn.jpg");
+	m_jupiter = new Sphere(48, "Planetary Textures\\Jupiter.jpg", "Planetary Textures\\Jupiter-n.jpg");
+	m_uranus = new Sphere(64, "Planetary Textures\\Uranus.jpg", "Planetary Textures\\Uranus-n.jpg");
+
+	// Asteroid Belt and other bodies
 	m_ceres = new Sphere(20, "Planetary Textures\\Ceres.jpg", "Planetary Textures\\Ceres-n.jpg");
+	m_eris = new Sphere(20, "Planetary Textures\\Eris.jpg", "Planetary Textures\\Eris-n.jpg");
+	m_haumea = new Sphere(20, "Planetary Textures\\Haumea.jpg", "Planetary Textures\\Haumea-n.jpg");
 
 	//enable depth testing
 	glEnable(GL_DEPTH_TEST);
@@ -103,13 +114,13 @@ bool Graphics::Initialize(int width, int height)
 
 	return true;
 }
-
+// Big planetary bodies
 void Graphics::HierarchicalUpdateSystem1(double dt) {
 
 	std::vector<float> speed, dist, rotSpeed, scale;
 	glm::vec3 rotVector;
 
-	// position of the sun	
+	// position of the Sun	
 	modelStack.push(glm::translate(glm::mat4(1.f), glm::vec3(0, 0, 0)));  // world origin
 	modelStack.push(modelStack.top());		// The sun origin
 	modelStack.top() *= glm::rotate(glm::mat4(1.0f), (float)dt, glm::vec3(0.f, 1.f, 0.f));
@@ -118,14 +129,60 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_sun->Update(modelStack.top());
 	modelStack.pop(); // back to sun's positional transformation
 
-	// position of the first planet
+	// position of Mercury
 	speed = { 1., 1., 1. };
-	dist = { 6., 0, 6. };
+	dist = { 2., 0, 2. };
 	rotVector = { 1.,1.,1. };
 	rotSpeed = { 1., 1., 1. };
-	scale = { .5,.5,.5 };
-	modelStack.top() *= glm::translate(glm::mat4(1.f),
-		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
+	scale = { .2,.2,.2 };
+	//modelStack.top() *= glm::translate(glm::mat4(1.f),
+		//glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
+	modelStack.push(modelStack.top());			// store planet coordinate
+	// Calc planet transforms
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
+	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+	if (m_mercury != NULL)
+		m_mercury->Update(modelStack.top());
+	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
+
+	// position of Venus
+	speed = { 6, 0, 6 };
+	dist = { 2.25, 0., 2.25 };
+	rotVector = { 1.,0.,1. };
+	rotSpeed = { .25, .25, .25 };
+	scale = { .27f, .27f, .27f };
+	/*modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));*/
+	modelStack.push(modelStack.top());
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
+	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+	if (m_venus != NULL)
+		m_venus->Update(modelStack.top());
+	modelStack.pop();
+
+	// position of Earth
+	speed = { 1., 1., 1. };
+	dist = { 3., 0, 3. };
+	rotVector = { 1.,1.,1. };
+	rotSpeed = { 1., 1., 1. };
+	scale = { .2,.2,.2 };
+	/*modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));*/
+	modelStack.push(modelStack.top());			// store planet coordinate
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
+	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+	if (m_earth != NULL)
+		m_earth->Update(modelStack.top());
+	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
+
+	// position of Mars
+	speed = { 1., 1., 1. };
+	dist = { 2., 0, 2. };
+	rotVector = { 1.,1.,1. };
+	rotSpeed = { 1., 1., 1. };
+	scale = { .2,.2,.2 };
+	/*modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));*/
 	modelStack.push(modelStack.top());			// store planet coordinate
 	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
 	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
@@ -133,24 +190,68 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_mars->Update(modelStack.top());
 	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
 
-	// position of the first moon
-
-	speed = { 6, 6, 6 };
-	dist = { 1.25, 1.25, 0. };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
-	scale = { .27f, .27f, .27f };
-	modelStack.top() *= glm::translate(glm::mat4(1.f),
-		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
-	modelStack.push(modelStack.top());
+	// position of Jupiter
+	speed = { 1., 1., 1. };
+	dist = { 2., 0, 2. };
+	rotVector = { 1.,1.,1. };
+	rotSpeed = { 1., 1., 1. };
+	scale = { .2,.2,.2 };
+	/*modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));*/
+	modelStack.push(modelStack.top());			// store planet coordinate
 	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
 	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+	if (m_jupiter != NULL)
+		m_jupiter->Update(modelStack.top());
+	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
 
-	if (m_mesh != NULL)
-		m_mesh->Update(modelStack.top());
+	// position of Saturn
+	speed = { 1., 1., 1. };
+	dist = { 2., 0, 2. };
+	rotVector = { 1.,1.,1. };
+	rotSpeed = { 1., 1., 1. };
+	scale = { .2,.2,.2 };
+	/*modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));*/
+	modelStack.push(modelStack.top());			// store planet coordinate
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
+	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+	if (m_saturn != NULL)
+		m_saturn->Update(modelStack.top());
+	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
+
+	// position of Uranus
+	speed = { 1., 1., 1. };
+	dist = { 2., 0, 2. };
+	rotVector = { 1.,1.,1. };
+	rotSpeed = { 1., 1., 1. };
+	scale = { .2,.2,.2 };
+	/*modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));*/
+	modelStack.push(modelStack.top());			// store planet coordinate
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
+	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+	if (m_uranus != NULL)
+		m_uranus->Update(modelStack.top());
+	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
+
+	// position of Neptune
+	speed = { 1., 1., 1. };
+	dist = { 2., 0, 2. };
+	rotVector = { 1.,1.,1. };
+	rotSpeed = { 1., 1., 1. };
+	scale = { .2,.2,.2 };
+	/*modelStack.top() *= glm::translate(glm::mat4(1.f),
+		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));*/
+	modelStack.push(modelStack.top());			// store planet coordinate
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
+	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
+	if (m_neptune != NULL)
+		m_neptune->Update(modelStack.top());
+	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
 
 
-	modelStack.pop(); 	//back to the planet coordinate
+	//modelStack.pop(); 	//back to the planet coordinate
 
 	modelStack.pop(); 	// back to the world coordinate
 
