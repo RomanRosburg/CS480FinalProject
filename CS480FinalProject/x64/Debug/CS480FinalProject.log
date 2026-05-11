@@ -1,113 +1,78 @@
 ﻿  graphics.cpp
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,12): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,12): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,12): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,12): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,15): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,15): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,15): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,15): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,15): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,18): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,18): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,18): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(137,18): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,12): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,12): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,12): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,12): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,15): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,15): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,15): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,15): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,15): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,18): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,18): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,18): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(168,18): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,12): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,12): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,12): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,12): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,15): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,15): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,15): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,15): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,15): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,18): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,18): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,18): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(183,18): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,12): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,12): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,12): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,12): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,15): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,15): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,15): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,15): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,15): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,18): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,18): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,18): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(198,18): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,12): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,12): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,12): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,12): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,15): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,15): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,15): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,15): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,15): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,18): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,18): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,18): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(213,18): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,12): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,12): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,12): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,12): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,15): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,15): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,15): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,15): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,15): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,18): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,18): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,18): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(228,18): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,12): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,12): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,12): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,12): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,15): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,15): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,15): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,15): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,15): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,18): warning C4305:         with
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,18): warning C4305:         [
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,18): warning C4305:             _Ty=float
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(243,18): warning C4305:         ]
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(285,25): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(285,20): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(533,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(533,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(533,36): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(533,41): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,12): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,12): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,12): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,12): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,15): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,15): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,15): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,15): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,15): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,18): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,18): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,18): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(141,18): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,11): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,11): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,11): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,11): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,11): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,19): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,19): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,19): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,19): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(154,19): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,12): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,12): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,12): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,12): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,17): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,17): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,17): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,17): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,22): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,22): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,22): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,22): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(233,22): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,12): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,12): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,12): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,12): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,17): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,17): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,17): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,17): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,22): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,22): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,22): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,22): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(249,22): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,12): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,12): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,12): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,12): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,12): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,17): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,17): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,17): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,17): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,22): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,22): warning C4305:         with
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,22): warning C4305:         [
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,22): warning C4305:             _Ty=float
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(265,22): warning C4305:         ]
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(312,25): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(312,20): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(741,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(741,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(741,36): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\CS480FinalProject\graphics.cpp(741,41): warning C4305: 'initializing': truncation from 'double' to 'float'
   CS480FinalProject.vcxproj -> C:\Users\rosbu\OneDrive\Desktop\CS480Files\CS480FinalProject\x64\Debug\CS480FinalProject.exe
