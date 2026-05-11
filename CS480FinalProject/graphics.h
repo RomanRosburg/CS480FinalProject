@@ -27,6 +27,7 @@ class Graphics
     void HierarchicalUpdateSystem1(double dt);
     void HierarchicalUpdateSystem2(double dt);
     void HierarchicalUpdateSystem3(double dt);
+    void moveShip(glm::vec3 moveDir, double dt);
     void Render();
 
     Camera* getCamera() { return m_camera; }

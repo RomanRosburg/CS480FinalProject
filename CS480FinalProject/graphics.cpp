@@ -296,6 +296,15 @@ void Graphics::HierarchicalUpdateSystem3(double dt) {
 
 }
 
+void Graphics::moveShip(glm::vec3 moveDir, double dt)
+{
+	/// Calc matrix here
+	/*glm::mat4 currentMatrix = m_mesh->GetModel();
+	glm::mat4 tmat = glm::translate(glm::mat4(1.f), glm::vec3(0,0,moveDir.z));
+	glm::mat4 rmat = glm::rotateY(glm::mat4(1.f), glm::vec3(0,1,0));
+	glm::mat4 smat;*/
+}
+
 
 void Graphics::ComputeTransforms(double dt, std::vector<float> speed, std::vector<float> dist, 
 	std::vector<float> rotSpeed, glm::vec3 rotVector, std::vector<float> scale, glm::mat4& tmat, glm::mat4& rmat, glm::mat4& smat) {

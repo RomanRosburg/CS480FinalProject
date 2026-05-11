@@ -14,7 +14,7 @@ public:
 
     ~Mesh();
     void Update(glm::mat4 model);
-    void move(glm::vec3 direction);
+    void move(glm::vec3 direction, double dt);
     void Render(GLint posAttrib, GLint colAttrib);
     void Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex);
 

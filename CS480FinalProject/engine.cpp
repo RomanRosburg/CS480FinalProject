@@ -66,7 +66,24 @@ void Engine::ProcessInput()
 
 
     // Update camera animation here.
-
+    /// Ship Movement
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_W) == GLFW_PRESS) {
+        m_graphics->getCamera()->Translate(glm::vec3(0.0f, 0.0f, -1.0f), getDT());
+        m_graphics->moveShip(glm::vec3(0.0f, 0.0f, -1.0f), getDT());
+    }
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_S) == GLFW_PRESS) {
+        m_graphics->getCamera()->Translate(glm::vec3(0.0f, 0.0f, 1.0f), getDT());
+        m_graphics->moveShip(glm::vec3(0.0f, 0.0f, 1.0f), getDT());
+    }
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_A) == GLFW_PRESS) {
+        m_graphics->getCamera()->Translate(glm::vec3(-1.0f, 0.0f, 0.0f), getDT());
+        m_graphics->moveShip(glm::vec3(-1.0f, 0.0f, 0.0f), getDT());
+    }
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_D) == GLFW_PRESS) {
+        m_graphics->getCamera()->Translate(glm::vec3(1.0f, 0.0f, 0.0f), getDT());
+        m_graphics->moveShip(glm::vec3(1.0f, 0.0f, 0.0f), getDT());
+    }
+    
 
 
 
