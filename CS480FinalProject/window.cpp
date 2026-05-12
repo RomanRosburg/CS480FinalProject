@@ -24,7 +24,8 @@ Window::Window(const char* name, int* width, int* height)
 
   glfwMakeContextCurrent(gWindow);
 
-  this->Initialize();
+  // Engine::Initialize() calls this
+  //this->Initialize();
 }
 
 Window::~Window()

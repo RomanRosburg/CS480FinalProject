@@ -33,7 +33,7 @@ bool Camera::Initialize(int w, int h)
   projection = glm::perspective( glm::radians(40.f), //the FoV typically 90 degrees is good which is what this is set to
                                  float(w)/float(h), //Aspect Ratio, so Circles stay Circular
                                  0.01f, //Distance to the near plane, normally a small value like this
-                                 100.0f); //Distance to the far plane, 
+                                 2000.0f); //Distance to the far plane, 
   return true;
 }
 
@@ -44,21 +44,38 @@ glm::mat4 Camera::GetProjection()
 
 glm::mat4 Camera::GetView()
 {
-  return view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);;
+    return view;
 }
 
 void Camera::Translate(glm::vec3 translate, double dt)
 {
     float velocity = speed * dt;
     cameraPos += translate * velocity;
+    view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+}
+
+void Camera::setX(double xpos) {
+    x = xpos;
+}
+
+void Camera::setY(double ypos) {
+    y = ypos;
+}
+
+void Camera::setZ(double zoom) {
+    z = zoom;
+}
+
+void Camera::setPos(glm::vec3 pos) {
+    cameraPos = pos;
+    view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 }
 
 void Camera::mouseLook(float mouseX, float mouseY) {
-    mouseX *= mouseSensitivity;
-    mouseY *= mouseSensitivity;
-
-    yaw += mouseX;
-    pitch += mouseY;
+    yaw += (mouseX - x) * mouseSensitivity;
+    pitch += (y - mouseY) * mouseSensitivity;
+    setX(mouseX);
+    setY(mouseY);
 
     if (pitch > 89.0f) {
         pitch = 89.0f;
@@ -74,8 +91,9 @@ void Camera::lookAtPlanet()
 {
 }
 
-void Camera::updateFollow(glm::mat4 model)
+void Camera::updateFollow(glm::mat4* model)
 {
+    target = model;
 }
 
 void Camera::updateCamVectors()
@@ -91,5 +109,5 @@ void Camera::updateCamVectors()
     cameraUp = glm::normalize(glm::cross(cameraRight, cameraFront));
 
     // calculate new view matrix
-    //view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+    view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 }

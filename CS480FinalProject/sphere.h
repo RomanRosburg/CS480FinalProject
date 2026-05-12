@@ -12,6 +12,7 @@ public:
     void Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex);
 
     glm::mat4 GetModel() { return model; }
+    glm::mat4* GetDynamicModel() { return &model; }
     void Update(glm::mat4 matModel);
 
     Sphere(int prec);

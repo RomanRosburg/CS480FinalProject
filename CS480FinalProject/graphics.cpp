@@ -84,7 +84,9 @@ bool Graphics::Initialize(int width, int height)
 	}
 
 	// Starship
-	m_mesh = new Mesh(glm::vec3(2.0f, 3.0f, -5.0f), "SpaceShip-1\\SpaceShip-1.obj", "SpaceShip-1\\SpaceShip-1.png");
+	m_mesh = new Mesh(m_camera->getPos(), "SpaceShip-1\\SpaceShip-1.obj", "SpaceShip-1\\SpaceShip-1.png");
+	m_mesh->Update(glm::rotate(glm::scale(glm::vec3(0.02f, 0.02f, 0.02f)) * m_mesh->GetModel(), 3.14159f, glm::vec3(0.f, 1.f, 0.f)));
+	m_camera->updateFollow(m_mesh->GetDynamicModel());
 
 	// The Sun
 	m_sun = new Sphere(64, "Planetary Textures\\2k_sun.jpg");
@@ -108,6 +110,9 @@ bool Graphics::Initialize(int width, int height)
 	//m_eris = new Sphere(20, "Planetary Textures\\Eris.jpg", "Planetary Textures\\Eris-n.jpg");
 	//m_haumea = new Sphere(20, "Planetary Textures\\Haumea.jpg", "Planetary Textures\\Haumea-n.jpg");
 
+	m_skybox = new Sphere(64, "Cubemaps\\Galaxy2.jpg");
+	m_skybox->Update(glm::scale(glm::vec3(1000.0, 1000.0, 1000.0)) * glm::mat4(1.0f));
+
 	//enable depth testing
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
@@ -125,20 +130,21 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 	glm::vec3 rotVector;
 
 	// position of the Sun	
-	modelStack.push(glm::translate(glm::mat4(1.f), glm::vec3(0, 0, 0)));  // world origin
+	modelStack.push(glm::translate(glm::mat4(1.f), glm::vec3(0.f, 0.f, 0.f)));  // world origin
 	modelStack.push(modelStack.top());		// The sun origin
 	modelStack.top() *= glm::rotate(glm::mat4(1.0f), (float)dt, glm::vec3(0.f, 1.f, 0.f));
-	modelStack.top() *= glm::scale(glm::vec3(.75, .75, .75));
+	modelStack.top() *= glm::scale(glm::vec3(.75f, .75f, .75f));
 	if (m_sun != NULL)
 		m_sun->Update(modelStack.top());
 	modelStack.pop(); // back to sun's positional transformation
 
-	// position of Mercury
-	speed = { 1., 1., 1. };
-	dist = { 1.25, 0, 1.25 };
-	rotVector = { 1.,1.,1. };
-	rotSpeed = { 1., 1., 1. };
-	scale = { .2,.2,.2 };
+	// For aesthetic purposes, orbital and size values are scaled
+	// Mercury orbit: [45Gm, 70Gm], 3.4 deg, 47.4km/s
+	speed = { 0.474f, 0.474f, 0.474f };
+	dist = { 2.25f, 0.208f, 3.5f };
+	rotVector = { 1.f,1.f,1.f };
+	rotSpeed = { 1.f, 1.f, 1.f };
+	scale = { .19f,.19f,.19f };
 	modelStack.top() = glm::translate(glm::mat4(1.f),
 		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
 	modelStack.push(modelStack.top());			// store planet coordinate
@@ -149,12 +155,12 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_mercury->Update(modelStack.top());
 	modelStack.pop();		// back to planet's positional coordinate (remove the rotration, scale)
 
-	// position of Venus
-	speed = { 6, 6, 6 };
-	dist = { 1.9, 0, 1.9 };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
-	scale = { .25f, .25f, .25f };
+	// Venus orbit: ~108Gm, 3.9 deg, 35km/s
+	speed = { 0.35f, 0.35f, 0.35f };
+	dist = { 5.4f, 0.368f, 5.4f };
+	rotVector = { 1.f,0.f,1.f };
+	rotSpeed = { .25f, .25f, .25f };
+	scale = { .40f, .40f, .40f };
 	modelStack.top() = glm::translate(glm::mat4(1.f),
 		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
 	modelStack.push(modelStack.top());
@@ -165,27 +171,27 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_venus->Update(modelStack.top());
 	modelStack.pop();
 
-	// position of Earth
-	speed = { 2, 2, 2 };
-	dist = { 4.5, 0, 4.5 };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
-	scale = { .4f, .4f, .4f };
+	// Earth orbit: [147Gm, 152Gm], 7.2 deg, 29.8km/s
+	speed = { 0.298f, 0.298f, 0.298f };
+	dist = { 7.35f, 0.96f, 7.6f };
+	rotVector = { 1.f,0.f,1.f };
+	rotSpeed = { .25f, .25f, .25f };
+	scale = { .45f, .45f, .45f };
+	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
 	modelStack.top() = glm::translate(glm::mat4(1.f),
 		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
 	modelStack.push(modelStack.top());
-	modelStack.top() *= glm::rotate(glm::mat4(1.f), rotSpeed[0] * (float)dt, rotVector);
 	modelStack.top() *= glm::scale(glm::vec3(scale[0], scale[1], scale[2]));
 
 	if (m_earth != NULL)
 		m_earth->Update(modelStack.top());
 	modelStack.pop();
 
-	// position of Moon
-	speed = { 2, 2, 2 };
-	dist = { 1.5, 1, 1.5 };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
+	// Moon Orbit: [362Mm, 405Mm], 84.9 deg, 1km/s
+	speed = { 0.05f, 0.05f, 0.05f };
+	dist = { 0.181f, 2.03f, 0.181f };
+	rotVector = { 1.f,0.f,1.f };
+	rotSpeed = { .25f, .25f, .25f };
 	scale = { .1f, .1f, .1f };
 	modelStack.push(modelStack.top());
 	modelStack.top() *= glm::translate(glm::mat4(1.f),
@@ -197,12 +203,12 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_moon->Update(modelStack.top());
 	modelStack.pop();
 
-	// position of Mars
-	speed = { 2, 2, 2 };
-	dist = { 9.5, 0, 9.5 };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
-	scale = { .4f, .4f, .4f };
+	// Mars Orbit: [207Gm, 249Gm], 5.6deg, 24.1km/s
+	speed = { 0.241f, 0.241f, 0.241f };
+	dist = { 10.4f, 1.23f, 12.5f };
+	rotVector = { 1.f,0.f,1.f };
+	rotSpeed = { .25f, .25f, .25f };
+	scale = { .3f, .3f, .3f };
 	modelStack.top() = glm::translate(glm::mat4(1.f),
 		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
 	modelStack.push(modelStack.top());
@@ -213,12 +219,12 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_mars->Update(modelStack.top());
 	modelStack.pop();
 
-	// position of Jupiter
-	speed = { 1.5, 1.5, 1.5 };
-	dist = { 20.0, 0, 20.0 };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
-	scale = { 1.5f, 1.5f, 1.5f };
+	// Jupiter Orbit: [741Gm, 816Gm], 6.1deg, 13.1km/s
+	speed = { 0.131f, 0.131f, 0.131f };
+	dist = { 30.0f, 2.8f, 33.0f };
+	rotVector = { 1.f,0.f,1.f };
+	rotSpeed = { .25f, .25f, .25f };
+	scale = { 1.f, 1.f, 1.f };
 	modelStack.top() = glm::translate(glm::mat4(1.f),
 		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
 	modelStack.push(modelStack.top());
@@ -229,12 +235,12 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_jupiter->Update(modelStack.top());
 	modelStack.pop();
 
-	// position of Saturn
-	speed = { 1.2, 1.2, 1.2 };
-	dist = { 50.0, 0, 50.0 };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
-	scale = { 1.4f, 1.4f, 1.4f };
+	// Saturn Orbit: [1353Gm, 1515Gm], 5.5deg, 9.68km/s
+	speed = { 0.1f, 0.1f, 0.1f };
+	dist = { 48.0f, 4.0f, 52.0f };
+	rotVector = { 1.f,0.f,1.f };
+	rotSpeed = { .25f, .25f, .25f };
+	scale = { 0.9f, 0.9f, 0.9f };
 	modelStack.top() = glm::translate(glm::mat4(1.f),
 		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
 	modelStack.push(modelStack.top());
@@ -245,12 +251,12 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_saturn->Update(modelStack.top());
 	modelStack.pop();
 
-	// position of Uranus
-	speed = { 1.3, 1.3, 1.3 };
-	dist = { 90.0, 0, 90.0 };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
-	scale = { 1.4f, 1.4f, 1.4f };
+	// Uranus Orbit: [2736Gm, 2871Gm], 6.5deg, 6.8km/s
+	speed = { 0.08f, 0.08f, 0.08f };
+	dist = { 80.0f, 12.0f, 110.0f };
+	rotVector = { 1.f,0.f,1.f };
+	rotSpeed = { .25f, .25f, .25f };
+	scale = { 0.7f, 0.7f, 0.7f };
 	modelStack.top() = glm::translate(glm::mat4(1.f),
 		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
 	modelStack.push(modelStack.top());
@@ -261,12 +267,12 @@ void Graphics::HierarchicalUpdateSystem1(double dt) {
 		m_uranus->Update(modelStack.top());
 	modelStack.pop();
 
-	// position of Neptune
-	speed = { 1.1, 1.1, 1.1 };
-	dist = { 120.0, 0, 120.0 };
-	rotVector = { 1.,0.,1. };
-	rotSpeed = { .25, .25, .25 };
-	scale = { 1.4f, 1.4f, 1.4f };
+	// Neptune Orbit: [4460Gm, 4540Gm], 6.4deg, 5.45km/s
+	speed = { 0.065f, 0.065f, 0.065f };
+	dist = { 160.0, 13.0f, 200.0f };
+	rotVector = { 1.f,0.f,1.f };
+	rotSpeed = { .25f, .25f, .25f };
+	scale = { 0.65f, 0.65f, 0.65f };
 	modelStack.top() = glm::translate(glm::mat4(1.f),
 		glm::vec3(cos(speed[0] * dt) * dist[0], sin(speed[1] * dt) * dist[1], sin(speed[2] * dt) * dist[2]));
 	modelStack.push(modelStack.top());
@@ -298,13 +304,12 @@ void Graphics::HierarchicalUpdateSystem3(double dt) {
 
 void Graphics::moveShip(glm::vec3 moveDir, double dt)
 {
-	/// Calc matrix here
-	/*glm::mat4 currentMatrix = m_mesh->GetModel();
-	glm::mat4 tmat = glm::translate(glm::mat4(1.f), glm::vec3(0,0,moveDir.z));
-	glm::mat4 rmat = glm::rotateY(glm::mat4(1.f), glm::vec3(0,1,0));
-	glm::mat4 smat;*/
+	m_mesh->Update(glm::translate(m_mesh->GetModel(), (float) dt * moveDir));
 }
 
+void Graphics::rotateShip(glm::mat4 rot) {
+	m_mesh->Update(rot * m_mesh->GetModel());
+}
 
 void Graphics::ComputeTransforms(double dt, std::vector<float> speed, std::vector<float> dist, 
 	std::vector<float> rotSpeed, glm::vec3 rotVector, std::vector<float> scale, glm::mat4& tmat, glm::mat4& rmat, glm::mat4& smat) {
@@ -340,11 +345,28 @@ void Graphics::Render()
 				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
-			//m_mesh->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			m_mesh->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+		}
+	}
+
+	if (m_skybox != NULL) {
+		glUniform1i(m_hasTexture, false);
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_skybox->GetModel()));
+		if (m_skybox->hasTex) {
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, m_skybox->getTextureID());
+			GLuint sampler = m_shader->GetUniformLocation("samp");
+			if (sampler == INVALID_UNIFORM_LOCATION)
+			{
+				printf("Sampler Not found not found\n");
+			}
+			glUniform1i(sampler, 0);
+			m_skybox->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
 
 	m_hasN = m_shader->GetUniformLocation("hasNormalMap");
+
 	if (m_sun != NULL) {
 		glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_sun->GetModel())))));
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
@@ -639,6 +661,31 @@ void Graphics::Render()
 	}
 }
 
+glm::mat4* Graphics::observeNext() {
+	observing = (observing + 1) % 10;
+	switch (observing) {
+	case 0:
+		return m_sun->GetDynamicModel();
+	case 1:
+		return m_mercury->GetDynamicModel();
+	case 2:
+		return m_venus->GetDynamicModel();
+	case 3:
+		return m_earth->GetDynamicModel();
+	case 4:
+		return m_moon->GetDynamicModel();
+	case 5:
+		return m_mars->GetDynamicModel();
+	case 6:
+		return m_jupiter->GetDynamicModel();
+	case 7:
+		return m_saturn->GetDynamicModel();
+	case 8:
+		return m_uranus->GetDynamicModel();
+	case 9:
+		return m_neptune->GetDynamicModel();
+	}
+}
 
 bool Graphics::collectShPrLocs() {
 	bool anyProblem = true;

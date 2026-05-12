@@ -19,6 +19,7 @@ public:
     void Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex);
 
     glm::mat4 GetModel();
+    glm::mat4* GetDynamicModel() { return &model; }
 
     bool InitBuffers();
     bool loadModelFromFile(const char* path);

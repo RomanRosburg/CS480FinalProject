@@ -28,13 +28,18 @@ class Graphics
     void HierarchicalUpdateSystem2(double dt);
     void HierarchicalUpdateSystem3(double dt);
     void moveShip(glm::vec3 moveDir, double dt);
+    void rotateShip(glm::mat4 rot);
     void Render();
+    glm::mat4* observeNext();
 
     Camera* getCamera() { return m_camera; }
+    Mesh* getShip() { return m_mesh; }
+    Sphere* getSun() { return m_sun; }
 
   private:
     std::string ErrorString(GLenum error);
 
+    int observing = 0;
     bool collectShPrLocs();
     bool materialSetup();
     void ComputeTransforms (double dt, std::vector<float> speed, std::vector<float> dist,
@@ -90,10 +95,8 @@ class Graphics
     // Player Ship
     Mesh* m_mesh;
 
-    // Cubemap
-    Object* m_cubemap;
-
-    Mesh* m_skybox;
+    // Sky Sphere
+    Sphere* m_skybox;
 
 };
 
